@@ -10,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class CurriculumService {
@@ -29,7 +28,7 @@ public class CurriculumService {
 
     public ResponseEntity<List<CurriculumDto>> getAllCurricula() {
         return new ResponseEntity<>(curriculumRepository.findAll(Sort.by("createdOn")).stream()
-                .map(CurriculumMapper::fromCurriculumToCurriculumDto).collect(Collectors.toList()),
+                .map(CurriculumMapper::fromCurriculumToCurriculumDto).toList(),
                 HttpStatus.OK);
     }
 
